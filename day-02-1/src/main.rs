@@ -1,7 +1,7 @@
 use std::fs::File;
+use std::io::BufRead;
 use std::io::BufReader;
 use std::path::Path;
-use std::io::BufRead;
 
 enum Direction {
     Up,
@@ -19,8 +19,8 @@ fn main() {
 
     let mut moves: Vec<Move> = Vec::new();
 
-    for line in lines{
-        let line : String = match line {
+    for line in lines {
+        let line: String = match line {
             Ok(l) => l.trim().to_string(),
             Err(_) => continue,
         };
@@ -36,13 +36,15 @@ fn main() {
                 "forward" => Direction::Forward,
                 &_ => continue,
             },
-            words_in_line[1].parse().expect("Error parsing steps as a number!"),
+            words_in_line[1]
+                .parse()
+                .expect("Error parsing steps as a number!"),
         );
         moves.push(next_move);
     }
 
     let (x, y) = simulate_moves(moves);
-    println!("The result is x: {}, y: {}, product: {}", x, y, x*y);
+    println!("The result is x: {}, y: {}, product: {}", x, y, x * y);
 }
 
 fn simulate_moves(moves: Vec<Move>) -> (u32, u32) {
@@ -58,9 +60,6 @@ fn simulate_moves(moves: Vec<Move>) -> (u32, u32) {
     return (x, y);
 }
 
-
-
-
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -71,7 +70,7 @@ mod tests {
             (7, 3),
             simulate_moves(vec![
                 Move(Direction::Down, 5),
-                Move(Direction::Forward, 7), 
+                Move(Direction::Forward, 7),
                 Move(Direction::Up, 2)
             ])
         )
