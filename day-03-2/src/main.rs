@@ -86,7 +86,7 @@ fn find_best_string(input: &Vec<String>, most_common: bool, one_tie: bool) -> St
             return entry.to_string();
         }
     }
-    panic!("No unique result found!");
+    panic!("Result not found, that's weird!");
 }
 
 fn to_number(bitstring: String) -> u32 {
