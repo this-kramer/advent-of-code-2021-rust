@@ -34,7 +34,7 @@ fn solve(path: &str) -> u32 {
                     i as u32 - x
                 }
             })
-            .map(|x| (x * (x+1)) /2)
+            .map(|x| (x * (x + 1)) / 2)
             .sum::<u32>();
         if score < best_score {
             best_score = score;
