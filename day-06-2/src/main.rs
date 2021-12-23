@@ -3,18 +3,20 @@ use std::io::BufRead;
 use std::io::BufReader;
 use std::path::Path;
 
+const DAYS: usize = 256;
+
 fn main() {
     let result = solve("res/input.txt");
     println!("The result is {}", result);
 }
 
-fn solve(path: &str) -> u32 {
+fn solve(path: &str) -> u64 {
     let path = Path::new(path);
     let file = File::open(&path).expect("Error opening file");
     let reader = BufReader::new(file);
     let mut lines = reader.lines();
 
-    let mut colony: Vec<u32> = vec![0; 9];
+    let mut colony: Vec<u64> = vec![0; 9];
 
     if let Some(Ok(line)) = lines.next() {
         line.split(",")
@@ -22,8 +24,8 @@ fn solve(path: &str) -> u32 {
             .for_each(|x: usize| colony[x] += 1);
     };
 
-    let mut new_colony: Vec<u32>;
-    for _ in 0..80 {
+    let mut new_colony: Vec<u64>;
+    for _ in 0..DAYS {
         new_colony = vec![0; 9];
         for (i, &count) in colony.iter().enumerate() {
             match i {
@@ -46,6 +48,6 @@ mod tests {
 
     #[test]
     fn solve_with_test_data() {
-        assert_eq!(5934, solve("res/test_input.txt"))
+        assert_eq!(26984457539, solve("res/test_input.txt"))
     }
 }
