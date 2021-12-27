@@ -1,2 +1,2 @@
 # Advent of Code 2021 - Rust
-Me trying to learn Rust with Advent of Code 2021
+Learning Rust with [Advent of Code 2021](https://adventofcode.com/2021).
