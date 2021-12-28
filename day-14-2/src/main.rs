@@ -81,6 +81,7 @@ impl From<&PairInsertionRule> for String {
         format!("{}{} -> {}", rule.left, rule.right, rule.insertion)
     }
 }
+
 impl fmt::Display for PairInsertionRule {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> fmt::Result {
         write!(f, "{}", String::from(self))
@@ -117,6 +118,7 @@ fn read_input(path: &str) -> (String, Vec<PairInsertionRule>) {
 
     (starting_polymer, rules)
 }
+
 #[cfg(test)]
 mod test {
     use super::*;
